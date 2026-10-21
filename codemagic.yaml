@@ -1,9 +1,11 @@
 workflows:
   tradexa-android:
     name: Tradexa Android
-    max_build_duration: 30
+    max_build_duration: 20
     instance_type: linux
     environment:
+      groups:
+        - expo
       node: 20
     scripts:
       - name: Install dependencies
@@ -16,7 +18,3 @@ workflows:
           ./gradlew assembleRelease
     artifacts:
       - android/app/build/outputs/**/*.apk
-    publishing:
-      email:
-        recipients:
-          - tradexa.ai@gmail.com
